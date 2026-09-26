@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple controller glyph: body, D-pad and two face buttons. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFE8EEF5"
+        android:pathData="M38,40h32c8.8,0 14,7 16,16l3,12c1.2,5 -2,9 -6.5,9c-3,0 -5,-1.6 -6.8,-4.2L72,68H36l-3.7,4.8C30.5,75.4 28.5,77 25.5,77C21,77 17.8,73 19,68l3,-12C24,47 29.2,40 38,40z" />
+    <path
+        android:fillColor="#FF1B2430"
+        android:pathData="M34,50h4v6h6v4h-6v6h-4v-6h-6v-4h6z" />
+    <path
+        android:fillColor="#FF4FC3F7"
+        android:pathData="M72,52m-3.5,0a3.5,3.5 0,1 1,7 0a3.5,3.5 0,1 1,-7 0" />
+    <path
+        android:fillColor="#FFFF8A65"
+        android:pathData="M79,59m-3.5,0a3.5,3.5 0,1 1,7 0a3.5,3.5 0,1 1,-7 0" />
+</vector>

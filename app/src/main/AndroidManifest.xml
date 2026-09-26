@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- GameProbe v0.1 requests no permissions. Controller input and InputDevice
+         metadata are available to any foreground app. -->
+
+    <uses-feature
+        android:name="android.hardware.gamepad"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GameProbe">
+
+        <!-- configChanges: connecting a controller changes the keyboard/navigation
+             configuration. Handling it here keeps live probe state instead of
+             recreating the activity on every hot plug.
+             enableOnBackInvokedCallback=false: with predictive back, Android 16+ no
+             longer dispatches KEYCODE_BACK to the app. Some controllers send BACK for
+             their Select/View button, and the probe must be able to record it. -->
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:enableOnBackInvokedCallback="false"
+            android:exported="true"
+            tools:targetApi="33">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

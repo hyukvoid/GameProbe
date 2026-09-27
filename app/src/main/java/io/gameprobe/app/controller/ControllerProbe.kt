@@ -170,6 +170,8 @@ class ControllerProbe(context: Context) : InputManager.InputDeviceListener {
                     eventTimeMs = event.eventTime,
                     source = event.source,
                     changedAxes = changed,
+                    // Android may batch several hardware samples into one event.
+                    samples = event.historySize + 1,
                 ),
             )
         }
@@ -203,7 +205,11 @@ class ControllerProbe(context: Context) : InputManager.InputDeviceListener {
         if (deviceId in nonControllerIds) return null
         // Event from a device we have not enumerated yet (listener race); re-enumerate once.
         refreshDevices()
-        return sessions[deviceId]
+        sessions[deviceId]?.let { return it }
+        // Still unknown, e.g. the virtual keyboard (id -1) used for injected keys. Remember it
+        // until the next device change so every such key does not trigger a re-enumeration.
+        nonControllerIds = nonControllerIds + deviceId
+        return null
     }
 
     /** Re-read every InputDevice. InputDevice objects are snapshots and go stale on change. */

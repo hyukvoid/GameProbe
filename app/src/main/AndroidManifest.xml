@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- GameProbe v0.1 requests no permissions. Controller input and InputDevice
+    <!-- GameProbe v0.1 declares no permissions. Controller input and InputDevice
          metadata are available to any foreground app. -->
 
     <uses-feature
@@ -14,10 +14,13 @@
 
     <application
         android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GameProbe">
+        android:theme="@style/Theme.GameProbe"
+        tools:targetApi="31">
 
         <!-- configChanges: connecting a controller changes the keyboard/navigation
              configuration. Handling it here keeps live probe state instead of

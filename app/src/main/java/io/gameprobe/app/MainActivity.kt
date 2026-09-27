@@ -1,5 +1,6 @@
 package io.gameprobe.app
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -47,6 +48,10 @@ class MainActivity : ComponentActivity() {
      * Events from non-controller devices (touchscreen, phone navigation) pass through.
      */
 
+    // androidx.core marks ComponentActivity.dispatchKeyEvent @RestrictTo because it routes
+    // through KeyEventDispatcher internally. Overriding it and delegating to super keeps that
+    // routing intact; it is the only hook that sees keys before Compose focus handling.
+    @SuppressLint("RestrictedApi")
     override fun dispatchKeyEvent(event: KeyEvent): Boolean =
         probe.onKeyEvent(event) || super.dispatchKeyEvent(event)
 
